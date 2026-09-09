@@ -1,0 +1,250 @@
+:root {
+  --bg: #0b0e14;
+  --card-bg: #131722;
+  --card-border: #232838;
+  --text-primary: #f1f3f9;
+  --text-secondary: #9198ab;
+  --accent: #6366f1;
+  --accent-hover: #4f52d6;
+  --error: #f87171;
+  --error-bg: rgba(248, 113, 113, 0.1);
+  --input-bg: #0f131c;
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  gap: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.brand {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 28px;
+}
+
+.url-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.url-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--input-bg);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.url-input::placeholder {
+  color: #565d70;
+}
+
+.url-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.url-input:disabled {
+  opacity: 0.6;
+}
+
+.shorten-btn {
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.shorten-btn:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.shorten-btn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+.shorten-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-box {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--error-bg);
+  color: var(--error);
+  font-size: 14px;
+  border: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.result-card {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--input-bg);
+  border: 1px solid var(--card-border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.result-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.result-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.short-url-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.short-url-link {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.short-url-link:hover {
+  text-decoration: underline;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+}
+
+.original-url {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  word-break: break-all;
+}
+
+.stats-row {
+  display: flex;
+  gap: 24px;
+  padding-top: 12px;
+  border-top: 1px solid var(--card-border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-value {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.footer {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 22px;
+  }
+
+  .heading {
+    font-size: 26px;
+  }
+
+  .stats-row {
+    gap: 16px;
+  }
+}
