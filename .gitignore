@@ -1,13 +1,23 @@
 # Dependencies
 node_modules/
 
-# Env files
+# Environment files and secrets
 .env
-.env.local
+.env.*
+!.env.example
+!.env.sample
+
+# Local runtime / deployment state
+*.local
+*.local.json
+.serverless/
+.vercel/
+.next/
 
 # Build output
 dist/
 build/
+coverage/
 
 # Logs
 npm-debug.log*
