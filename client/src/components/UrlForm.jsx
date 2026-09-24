@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 function UrlForm({ onShorten, isLoading }) {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,18 +11,24 @@ function UrlForm({ onShorten, isLoading }) {
 
   return (
     <form className="url-form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className="url-input"
-        placeholder="Paste a long URL, e.g. https://github.com/you/project"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        disabled={isLoading}
-        autoFocus
-      />
-      <button type="submit" className="shorten-btn" disabled={isLoading}>
-        {isLoading ? 'Shortening…' : 'Shorten URL'}
-      </button>
+      <label className="sr-only" htmlFor="long-url">
+        Long URL
+      </label>
+      <div className="input-row">
+        <input
+          id="long-url"
+          type="text"
+          className="url-input"
+          placeholder="https://example.com/your-very-long-link"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          disabled={isLoading}
+          autoFocus
+        />
+        <button type="submit" className="shorten-btn" disabled={isLoading}>
+          {isLoading ? "Creating…" : "Create link"}
+        </button>
+      </div>
     </form>
   );
 }

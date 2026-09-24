@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 function formatDate(dateString) {
-  if (!dateString) return '—';
+  if (!dateString) return "—";
+
   const date = new Date(dateString);
   return date.toLocaleString(undefined, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
 }
 
@@ -21,14 +22,14 @@ function ResultCard({ result }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy:', err);
+      console.error("Failed to copy:", err);
     }
   };
 
   return (
     <div className="result-card">
       <div className="result-row">
-        <span className="result-label">Short URL</span>
+        <span className="result-label">Short link</span>
         <div className="short-url-row">
           <a
             href={result.shortUrl}
@@ -39,13 +40,13 @@ function ResultCard({ result }) {
             {result.shortUrl}
           </a>
           <button type="button" className="copy-btn" onClick={handleCopy}>
-            {copied ? 'Copied!' : 'Copy'}
+            {copied ? "Copied" : "Copy"}
           </button>
         </div>
       </div>
 
       <div className="result-row">
-        <span className="result-label">Original URL</span>
+        <span className="result-label">Original</span>
         <p className="original-url">{result.originalUrl}</p>
       </div>
 

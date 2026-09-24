@@ -1,0 +1,12 @@
+{
+  "name": "url-shortener-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm run dev:server",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "start:server": "npm --prefix server run start",
+    "build:client": "npm --prefix client run build"
+  }
+}
