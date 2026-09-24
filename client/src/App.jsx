@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import UrlForm from "./components/UrlForm.jsx";
 import ResultCard from "./components/ResultCard.jsx";
@@ -20,6 +20,16 @@ function App() {
       console.error("Failed to refresh click count:", err);
     }
   };
+
+  useEffect(() => {
+    if (!result?.shortCode) return undefined;
+
+    const refreshInterval = setInterval(() => {
+      refreshResult(result.shortCode);
+    }, 2000);
+
+    return () => clearInterval(refreshInterval);
+  }, [result?.shortCode]);
 
   const handleShorten = async (originalUrl) => {
     setIsLoading(true);
