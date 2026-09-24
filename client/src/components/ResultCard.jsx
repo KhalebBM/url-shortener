@@ -13,8 +13,12 @@ function formatDate(dateString) {
   });
 }
 
-function ResultCard({ result }) {
+function ResultCard({ result, onLinkOpened }) {
   const [copied, setCopied] = useState(false);
+
+  const handleLinkOpened = () => {
+    setTimeout(onLinkOpened, 300);
+  };
 
   const handleCopy = async () => {
     try {
@@ -36,6 +40,7 @@ function ResultCard({ result }) {
             target="_blank"
             rel="noopener noreferrer"
             className="short-url-link"
+            onClick={handleLinkOpened}
           >
             {result.shortUrl}
           </a>

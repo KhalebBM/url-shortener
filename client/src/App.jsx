@@ -12,6 +12,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const refreshResult = async (shortCode) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/api/urls/${shortCode}`);
+      setResult((currentResult) => ({ ...currentResult, ...response.data }));
+    } catch (err) {
+      console.error("Failed to refresh click count:", err);
+    }
+  };
+
   const handleShorten = async (originalUrl) => {
     setIsLoading(true);
     setError("");
@@ -54,7 +63,12 @@ function App() {
         <UrlForm onShorten={handleShorten} isLoading={isLoading} />
 
         {error && <div className="error-box">{error}</div>}
-        {result && <ResultCard result={result} />}
+        {result && (
+          <ResultCard
+            result={result}
+            onLinkOpened={() => refreshResult(result.shortCode)}
+          />
+        )}
       </div>
     </div>
   );
